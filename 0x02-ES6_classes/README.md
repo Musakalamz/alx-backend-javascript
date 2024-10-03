@@ -1,85 +1,143 @@
-# ES6 Data Manipulation
+# ES6 Classes
 
-This project contains tasks for learning to manipulate data in ECMAScript 2015 (ES6).
+This project contains tasks for learning to use classes in ECMAScript 2015 (ES6).
 
 ## Tasks To Complete
 
-+ [x] 0. **Basic list of objects**<br/>[0-get_list_students.js](0-get_list_students.js) contains a script that exports a function named `getListStudents` with the following requirements:
-  + Returns an array of objects.
-  + Each object should have three attributes: `id` (Number), `firstName` (String), and `location` (String).
-  + The array contains the following students in the order they're listed:
-    + `Guillaume`, id: `1`, in `San Francisco`.
-    + `James`, id: `2`, in `Columbia`.
-    + `Serena`, id: `5`, in `San Francisco`.
++ [x] 0. **You used to attend a place like this at some point**<br/>[0-classroom.js](0-classroom.js) contains a script that exports a class named `ClassRoom` with the following requirements:
+  + Prototype: `export default class ClassRoom`.
+  + It should accept one attribute named `maxStudentsSize` (Number) and assigned to `_maxStudentsSize`.
 
-+ [x] 1. **More mapping**<br/>[1-get_list_student_ids.js](1-get_list_student_ids.js) contains a script that exports a function named `getListStudentIds` with the following requirements:
-  + Returns an array of ids from a list of object.
-  + This function is taking one argument which is an array of objects - and this array is in the same format as the return value of `getListStudents` from the previous task.
-  + If the argument is not an array, the function returns an empty array.
-  + You must use the map function on the array.
++ [x] 1. **Let's make some classrooms**<br/>[1-make_classrooms.js](1-make_classrooms.js) contains a script that meets the following requirements:
+  + Import the `ClassRoom` class from [0-classroom.js](0-classroom.js).
+  + Export a function named `initializeRooms`. It should return an array of 3 `ClassRoom` objects with the sizes 19, 20, and 34 (in this order).
 
-+ [x] 2. **Filter**<br/>[2-get_students_by_loc.js](2-get_students_by_loc.js) contains a script that exports a function named `getStudentsByLocation` with the following requirements:
-  + Returns an array of objects who are located in a specific city.
-  + It should accept a list of students (from `getListStudents`) and a `city` (string) as parameters.
-  + You must use the `filter` function on the array.
++ [x] 2. **A Course, Getters, and Setters**<br/>[2-hbtn_course.js](2-hbtn_course.js) contains a script that exports a class named `HolbertonCourse` with the following requirements:
+  + Constructor arguments:
+    + `name` (String).
+    + `length` (Number).
+    + `students` (array of Strings).
+  + Make sure to verify the type of attributes during object creation.
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Implement a getter and setter for each attribute.
 
-+ [x] 3. **Reduce**<br/>[3-get_ids_sum.js](3-get_ids_sum.js) contains a script that exports a function named `getStudentIdsSum` with the following requirements:
-  + Returns the sum of all the student ids.
-  + It should accept a list of students (from `getListStudents`) as a parameter.
-  + You must use the `reduce` function on the array.
++ [x] 3. **Methods, static methods, computed methods names..... MONEY**<br/>[3-currency.js](3-currency.js) contains a script that exports a class named `Currency` with the following requirements:
+  + Constructor arguments:
+    + `code` (String).
+    + `name` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Implement a getter and setter for each attribute.
+  + Implement a method named `displayFullCurrency` that will return the attributes in the format `name (code)`.
 
-+ [x] 4. **Combine**<br/>[4-update_grade_by_city.js](4-update_grade_by_city.js) contains a script that exports a function named `updateStudentGradeByCity` with the following requirements:
-  + Returns an array of students for a specific city with their new grade.
-  + It should accept a list of students (from `getListStudents`), a `city` (String), and `newGrades` (Array of “grade” objects) as parameters.
-  + `newGrades` is an array of objects with this format:
-    ```js
-    {
-      studentId: Number,
-      grade: Number,
++ [x] 4. **Pricing**<br/>[4-pricing.js](4-pricing.js) contains a script that meets the following requirements:
+  + Import the class `Currency` from [3-currency.js](3-currency.js).
+  + Export a class named `Pricing` that meets the following requirements:
+    + Constructor arguments:
+      + `amount` (Number).
+      + `currency` (Currency).
+    + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+    + Implement a getter and setter for each attribute.
+    + Implement a method named `displayFullPrice` that returns the attributes in the format `amount currency_name (currency_code)`.
+    + Implement a static method named `convertPrice`. It should accept two arguments: `amount` (Number), `conversionRate` (Number). The function should return the amount multiplied by the conversion rate.
+
++ [x] 5. **A Building**<br/>[5-building.js](5-building.js) contains a script that exports a class named `Building` with the following requirements:
+  + Constructor arguments:
+    + `sqft` (Number).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Implement a getter for each attribute.
+  + Consider this class as an abstract class. And make sure that any class that extends from it should implement a method named `evacuationWarningMessage`.
+    + If a class that extends from it does not have a `evacuationWarningMessage` method, throw an error with the message `Class extending Building must override evacuationWarningMessage`.
+
++ [x] 6. **Inheritance**<br/>[6-sky_high.js](6-sky_high.js) contains a script that meets the following requirements:
+  + Import `Building` from [4-building.js](4-building.js).
+  + Export a class named `SkyHighBuilding` that extends from `Building` and meets the following requirements:
+    + Constructor arguments:
+      + `sqft` (Number) (must be assigned to the parent class `Building`).
+      + `floors` (Number).
+    + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+    + Implement a getter for each attribute.
+    + Override the method named `evacuationWarningMessage` and return the following string `Evacuate slowly the NUMBER_OF_FLOORS floors`.
+
++ [x] 7. **Airport**<br/>[7-airport.js](7-airport.js) contains a script that exports a class named `Airport` with the following requirements:
+  + Constructor arguments:
+    + `name` (String).
+    + `code` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + The default string description of the class should return the airport `code` (example below).
+
++ [x] 8. **Primitive - Holberton Class**<br/>[8-hbtn_class.js](8-hbtn_class.js) contains a script that exports a class named `HolbertonClass` with the following requirements:
+  + Constructor arguments:
+    + `size` (Number).
+    + `location` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + When the class is cast into a `Number`, it should return the size.
+  + When the class is cast into a `String`, it should return the location.
+
++ [x] 9. **Hoisting**<br/>[9-hoisting.js](9-hoisting.js) contains a fixed and working copy of the code below:
+  ```js
+  const class2019 = new HolbertonClass(2019, 'San Francisco');
+  const class2020 = new HolbertonClass(2020, 'San Francisco');
+
+  export class HolbertonClass {
+    constructor(year, location) {
+      this._year = year;
+      this._location = location;
     }
-    ```
 
-+ [x] 5. **Typed Arrays**<br/>[5-typed_arrays.js](5-typed_arrays.js) contains a script that exports a function named `createInt8TypedArray` with the following requirements:
-  + Returns a new `ArrayBuffer` with an `Int8` value at a specific position.
-  + It should accept three arguments: `length` (Number), `position` (Number), and `value` (Number).
-  + If adding the value is not possible the error `Position outside range` should be thrown.
-
-+ [x] 6. **Set data structure**<br/>[6-set.js](6-set.js) contains a script that exports a function named `setFromArray` with the following requirements:
-  + Returns a `Set` from an array.
-  + It accepts an argument (Array, of any kind of element).
-
-+ [x] 7. **More set data structure**<br/>[7-has_array_values.js](7-has_array_values.js) contains a script that exports a function named `hasValuesFromArray` with the following requirements:
-  + Returns a boolean if all the elements in the array exist within the set.
-  + It accepts two arguments: a `set` (Set) and an `array` (Array).
-
-+ [x] 8. **Clean set**<br/>[8-clean_set.js](8-clean_set.js) contains a script that exports a function named `cleanSet` with the following requirements:
-  + Returns a string of all the set values that start with a specific string (`startString`).
-  + It accepts two arguments: a `set` (Set) and a `startString` (String).
-  + When a value starts with `startString` you only append the rest of the string. The string contains all the values of the set separated by `-`.
-
-+ [x] 9. **Map data structure**<br/>[9-groceries_list.js](9-groceries_list.js) contains a script that exports a function named `groceriesList` with the following requirements:
-  + Returns a map of groceries with the following items (name, quantity):
-    ```cs
-    "Apples", 10
-    "Tomatoes", 10
-    "Pasta", 1
-    "Rice", 1
-    "Banana", 5
-    ```
-
-+ [x] 10. **More map data structure**<br/>[10-update_uniq_items.js](10-update_uniq_items.js) contains a script that exports a function named `updateUniqueItems` with the following requirements:
-  + Returns an updated map for all items with initial quantity at 1.
-  + It should accept a map as an argument. The map it accepts for argument is similar to the map you create in the previous task.
-  + For each entry of the map where the quantity is 1, update the quantity to 100. If updating the quantity is not possible (argument is not a map) the error `Cannot process` should be thrown.
-
-+ [x] 11. **Weak link data structure**<br/>[100-weak.js](100-weak.js) contains a script that meets the following requirements:
-  + Export a `const` instance of `WeakMap` and name it `weakMap`.
-  + Export a new function named `queryAPI`. It should accept an endpoint argument like so:
-    ```js
-    {
-      protocol: 'http',
-      name: 'getUsers',
+    get year() {
+      return this._year;
     }
-    ```
-  + Track within the `weakMap` the number of times `queryAPI` is called for each endpoint.
-  + When the number of queries is >= 5 throw an error with the message `Endpoint load is high`.
+
+    get location() {
+      return this._location;
+    }
+  }
+
+  const student1 = new StudentHolberton('Guillaume', 'Salva', class2020);
+  const student2 = new StudentHolberton('John', 'Doe', class2020);
+  const student3 = new StudentHolberton('Albert', 'Clinton', class2019);
+  const student4 = new StudentHolberton('Donald', 'Bush', class2019);
+  const student5 = new StudentHolberton('Jason', 'Sandler', class2019);
+
+  export class StudentHolberton {
+    constructor(firstName, lastName) {
+      this._firstName = firstName;
+      this._lastName = lastName;
+      this._holbertonClass = holbertonClass;
+    }
+
+    get fullName() {
+      return `${this._firstName} ${this._lastName}`;
+    }
+
+    get holbertonClass() {
+      return this.holbertonClass;
+    }
+
+    get fullStudentDescription() {
+      return `${self._firstName} ${self._lastName} - ${self._holbertonClass.year} - ${self._holbertonClass.location}`;
+    }
+  }
+
+
+  export const listOfStudents = [student1, student2, student3, student4, student5];
+  ```
+
++ [x] 10. **Vroom**<br/>[10-car.js](10-car.js) contains a script that exports a class named `Car` with the following requirements:
+  + Constructor arguments:
+    + `brand` (String).
+    + `motor` (String).
+    + `color` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Add a method named `cloneCar`. This method should return a new object of the class.
+
++ [x] 11. **EVCar**<br/>[100-evcar.js](100-evcar.js) contains a script that meets the following requirements:
+  + Import `Car` from [10-car.js](10-car.js).
+  + Export a class named `EVCar` that extends the `Car` class and meets the following requirements:
+    + Constructor arguments:
+      + `brand` (String).
+      + `motor` (String).
+      + `color` (String).
+      + `range` (String).
+    + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+    + For privacy reasons, when `cloneCar` is called on an `EVCar` object, the object returned should be an instance of `Car` instead of `EVCar`.
